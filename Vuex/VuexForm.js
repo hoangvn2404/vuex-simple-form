@@ -1,11 +1,11 @@
-import FormObj from '../Objects/Form'
+import FormObject from '../Objects/Form'
 const Form = {
   state: {
-    form: new FormObj()
+    form: new FormObject()
   },
   mutations: {
     SET_FORM(state, form) {
-      state.form = form
+      state.form = new FormObject({ ...form })
     }
   },
   actions: {
