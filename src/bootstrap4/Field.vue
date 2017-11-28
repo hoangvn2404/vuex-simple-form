@@ -48,7 +48,7 @@
     .invalid-feedback(v-if='touch') {{ error }}
 </template>
 <script>
-import fieldMixin from './mixin'
+import fieldMixin from '../mixin'
 export default {
   mixins: [fieldMixin]
 }

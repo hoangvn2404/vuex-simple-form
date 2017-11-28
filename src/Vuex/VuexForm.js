@@ -1,4 +1,4 @@
-import FormObject from './Objects/Form'
+import FormObject from '../Objects/Form'
 const Form = {
   state: {
     form: new FormObject()

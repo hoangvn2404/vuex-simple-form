@@ -15,8 +15,9 @@ export default {
     },
     type: {
       type: String,
+      default: 'text',
       validator: function(value) {
-        return ['password', 'number', 'date', 'checkbox', 'hidden'].includes(value)
+        return ['text', 'password', 'number', 'date', 'checkbox', 'radio', 'textarea', 'select'].includes(value)
       }
     },
     placeholder: [String],

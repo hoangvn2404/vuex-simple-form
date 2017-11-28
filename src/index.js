@@ -1,5 +1,5 @@
-import VuexForm from './store'
-import mixins from './mixin'
+import VuexForm from './Vuex/VuexForm'
 import Field from './Field'
+import mixins from './mixin'
 export default VuexForm
-export { mixins, Field }
+export { Field, mixins }
