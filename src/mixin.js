@@ -5,7 +5,7 @@ export default {
   }),
 
   props: {
-    field: {
+    for: {
       type: String,
       required: true
     },
@@ -36,6 +36,9 @@ export default {
   },
   computed: {
     ...mapGetters(['form', 'validations']),
+    field() {
+      return this.for
+    },
     hideLabel() {
       return this.label === false
     },

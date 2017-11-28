@@ -13,7 +13,7 @@
         option(v-for='item in options' :key='item.value' :value='item.value' :selected="item.value == form[field]") {{ item.text }}
 
     template(v-if="type === 'radio'")
-      .form-check.form-check-inline(v-for='item in options')
+      .form-check(v-for='item in options' :class="{ 'form-check-inline': inline }")
         label.form-check-label
           input.form-check-input(type='radio'
                                  v-model='form[field]'
