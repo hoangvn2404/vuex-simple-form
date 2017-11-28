@@ -1,6 +1,2 @@
 node_modules  
-bs4
-Objects
-Vuex
-index.js
-mixin.js
+dist
