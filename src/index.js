@@ -1,5 +1,5 @@
 import VuexForm from './Vuex/VuexForm'
-import Field from './Field'
+import BS4Field from './Fields/bootstrap4'
 import mixins from './mixin'
 export default VuexForm
-export { Field, mixins }
+export { BS4Field, mixins }

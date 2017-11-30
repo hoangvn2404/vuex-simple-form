@@ -2,7 +2,7 @@
 .form-group.row
   label.col-form-label(:for='field'
                        v-if='!hideLabel'
-                       :class="form.horizontal ? 'col-sm-2' : 'col-sm-12'") {{ label || field }}
+                       :class="form.horizontal ? 'col-sm-2' : 'col-sm-12'") {{ label || field | capitalize }}
   div(:class="form.horizontal ? 'col-sm-10' : 'col-sm-12'")
     template(v-if="type === 'select'")
       select.form-control(:placeholder='placeholder'
@@ -48,7 +48,7 @@
     .invalid-feedback(v-if='touch') {{ error }}
 </template>
 <script>
-import fieldMixin from './mixin'
+import fieldMixin from '../mixin'
 export default {
   mixins: [fieldMixin]
 }

@@ -72,5 +72,15 @@ export default {
     anyErrorsFromServer: function(boolean) {
       if (boolean) this.touch = true
     }
+  },
+  filters: {
+    capitalize: function(value) {
+      if (!value) return ''
+      value = value
+        .toString()
+        .replace('_', ' ')
+        .replace('-', ' ')
+      return value.charAt(0).toUpperCase() + value.slice(1)
+    }
   }
 }
