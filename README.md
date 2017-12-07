@@ -1,6 +1,12 @@
-# ![Form For](./assets/form.png)
+# ![Form For](./assets/vuex-simple-form.gif)
 
-VueJS form with vuex, inspired by Rails gem simple_form
+VueJS form with vuex, inspired by Rails gem simple_form, which simplify the process of making form in Vue which help
+
+* Auto generate code for form quickly using bootstrap 4 style(support for all input type with label & error-indicator
+  for each field)
+* Handle client-side validations (on typing)
+* Handle server-side validations (after submit form)
+* Simple to use
 
 ```html
 <form @submit.prevent='onSubmit'>
@@ -92,6 +98,13 @@ export default {
 }
 ```
 
+the set_form object can take additional 2 parameters
+
+| Params      | Description                                          | Default |
+| ----------- | ---------------------------------------------------- | ------- |
+| horizontal  | set form horizontal (label & input in the same line) | false   |
+| validations | set client-side validation rules (detail below)      | null    |
+
 ### Import the Field Component
 
 Currently vuex-simple-form only support Bootstrap 4 input components, more are coming. Don't forget to add Bootstrap 4
@@ -128,12 +141,12 @@ When using with pug/jade templating language for writing html, you could make fo
 ```html
 <template lang='pug'>
 form(@submit.prevent='onSubmit')
-  field(for='title')
-  field(for='first_name')
-  field(for='description')
-  field(for='completed', type='checkbox', :collection='options.completed')
-  field(for='completed', type='radio', :collection='options.completed_radio')
-  field(for='days', type='checkbox', :collection='options.days', :inline='true')
+  field(name='title')
+  field(name='first_name')
+  field(name='description')
+  field(name='completed', type='checkbox', :collection='options.completed')
+  field(name='completed', type='radio', :collection='options.completed_radio')
+  field(name='days', type='checkbox', :collection='options.days', :inline='true')
   button.btn.btn-primary(type='submit', :disabled='disabled') Save
 </template>
 ```
@@ -159,8 +172,7 @@ const TodoValidations = values => {
   return errors
 }
 
-// input validation when set_form
-
+// pass the validation functions to the set_form action
 created: function() {
     this.set_form({
       ...this.todo,
@@ -185,7 +197,7 @@ export default {
 
     onSubmit() {
       const data = this.form.data()
-      axios.post(url, this.form.data())
+      axios.post(url, data)
         .then(response => {
           console.log(response)
         })
@@ -198,7 +210,7 @@ export default {
           }
 
           // use the following call to add server errors to vuex form
-          this.form.errors.record(server_errors)
+          this.form.serverErrors.record(server_errors)
         })
       )
     }
