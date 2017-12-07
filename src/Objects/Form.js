@@ -5,32 +5,27 @@ class Form {
     for (let field in data) {
       this[field] = data[field]
     }
-    this.errors = new Errors()
+    this.serverErrors = new Errors()
+    this.clientErrors = new Errors()
     this.isLoading = false
   }
 
   data() {
     let fields = { ...this }
-    delete fields.errors
-    delete fields.isLoading
+    delete fields.serverErrors
+    delete fields.clientErrors
     delete fields.validations
     delete fields.horizontal
-    delete fields.url
-    delete fields.method
-    delete fields.prefix
-    delete fields.submited
+    delete fields.isLoading
     return fields
   }
 
-  recordErrors(errors) {
-    this.errors.record(errors)
-  }
-
   reset() {
-    for (let field in this.fields()) {
+    for (let field in this.data()) {
       this[field] = ''
     }
-    this.errors.clear()
+    this.serverErrors.clear()
+    this.clientErrors.clear()
   }
 }
 

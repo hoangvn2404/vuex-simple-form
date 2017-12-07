@@ -5,7 +5,7 @@ export default {
   }),
 
   props: {
-    for: {
+    name: {
       type: String,
       required: true
     },
@@ -31,22 +31,19 @@ export default {
   methods: {
     editInput() {
       this.touch = true
-      this.form.errors.clear(this.field)
+      this.serverErrors.clear(this.name)
     }
   },
   computed: {
-    ...mapGetters(['form', 'validations']),
-    field() {
-      return this.for
-    },
+    ...mapGetters(['form', 'clientErrors', 'serverErrors']),
     hideLabel() {
       return this.label === false
     },
     error: {
       cache: false,
       get() {
-        if (this.form.errors.has(this.field)) return this.form.errors.get(this.field)
-        if (this.validations[this.field]) return this.validations[this.field].join(', ')
+        if (this.serverErrors.has(this.name)) return this.serverErrors.get(this.name)
+        if (this.clientErrors.has(this.name)) return this.clientErrors.get(this.name)
         return null
       }
     },
@@ -60,7 +57,7 @@ export default {
     anyErrorsFromServer: {
       cache: false,
       get() {
-        return this.form.errors.any()
+        return this.serverErrors.any()
       }
     },
     options() {

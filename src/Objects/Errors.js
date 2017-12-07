@@ -1,7 +1,6 @@
 class Errors {
   constructor() {
     this.errors = {}
-    this.general = null
   }
 
   has(field) {
@@ -20,11 +19,8 @@ class Errors {
   }
 
   record(errors) {
-    if (typeof errors === 'string') {
-      this.general = errors
-    } else {
-      this.errors = errors
-    }
+    this.errors = errors
+    return this
   }
 
   clear(field) {
@@ -33,7 +29,6 @@ class Errors {
       return
     }
     this.errors = {}
-    this.general = null
   }
 }
 export default Errors
