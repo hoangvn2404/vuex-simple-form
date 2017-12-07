@@ -1,12 +1,16 @@
+**Vuex Simple Form**\
+VueJS form with vuex, inspired by Rails gem simple_form, which simplify the process of making form in Vue with following
+goals:
+
+> * Auto generate code for form quickly using bootstrap 4 style(support for all input type with label & error-indicator
+>   for each field)
+> * Handle client-side validations (on typing)
+> * Handle server-side validations (after submit form)
+> * Simple to use
+
+**DEMO**
+
 # ![Form For](./assets/vuex-simple-form.gif)
-
-VueJS form with vuex, inspired by Rails gem simple_form, which simplify the process of making form in Vue which help
-
-* Auto generate code for form quickly using bootstrap 4 style(support for all input type with label & error-indicator
-  for each field)
-* Handle client-side validations (on typing)
-* Handle server-side validations (after submit form)
-* Simple to use
 
 ```html
 <form @submit.prevent='onSubmit'>
