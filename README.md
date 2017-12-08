@@ -67,12 +67,17 @@ Vuex form module provide you with the following getters & actions
 
 **Getters**
 
-* `form (Object)` our current form object
-* `disabled (Boolean)` return true if form pass all validation checking (both client & server side)
+* _`form (Object)`_ our current form object
+* _`disabled (Boolean)`_ return true if form pass all validation checking (both client & server side)
+* _`validateErrors (Object)`_ return the client validated errors as an object with following methods:
+  * `all()` return all errors
+  * `any()` return `true` if there is any errors
+  * `get(field_name)` return error detail for `field_name`
+  * `has(field_name)` return true if there is error for `field_name`
 
 **Actions**
 
-* `set_form({form_object})` set the form
+* _`set_form({form_object})`_ set the form
 
 ### Create new form
 
