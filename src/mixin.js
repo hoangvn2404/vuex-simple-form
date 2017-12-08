@@ -31,19 +31,19 @@ export default {
   methods: {
     editInput() {
       this.touch = true
-      this.serverErrors.clear(this.name)
+      this.form.errors.clear(this.name)
     }
   },
   computed: {
-    ...mapGetters(['form', 'clientErrors', 'serverErrors']),
+    ...mapGetters(['form', 'validateErrors']),
     hideLabel() {
       return this.label === false
     },
     error: {
       cache: false,
       get() {
-        if (this.serverErrors.has(this.name)) return this.serverErrors.get(this.name)
-        if (this.clientErrors.has(this.name)) return this.clientErrors.get(this.name)
+        if (this.form.errors.has(this.name)) return this.form.errors.get(this.name)
+        if (this.validateErrors.has(this.name)) return this.validateErrors.get(this.name)
         return null
       }
     },
@@ -57,7 +57,7 @@ export default {
     anyErrorsFromServer: {
       cache: false,
       get() {
-        return this.serverErrors.any()
+        return this.form.errors.any()
       }
     },
     options() {

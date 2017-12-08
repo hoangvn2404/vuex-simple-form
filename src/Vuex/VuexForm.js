@@ -15,10 +15,9 @@ const Form = {
   },
   getters: {
     form: state => state.form,
-    clientErrors: state =>
-      state.form.clientErrors.record(state.form.validations ? state.form.validations(state.form) : {}),
-    serverErrors: state => state.form.serverErrors,
-    disabled: (state, getters) => [getters.clientErrors.any(), getters.serverErrors.any()].includes(true)
+    validateErrors: state =>
+      state.form.validateErrors.record(state.form.validator ? state.form.validator(state.form.data()) : {}),
+    disabled: (state, getters) => [getters.validateErrors.any(), getters.form.errors.any()].includes(true)
   }
 }
 

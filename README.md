@@ -68,7 +68,6 @@ Vuex form module provide you with the following getters & actions
 **Getters**
 
 * `form (Object)` our current form object
-* `validations (Object)` client side validation error
 * `disabled (Boolean)` return true if form pass all validation checking (both client & server side)
 
 **Actions**
@@ -104,10 +103,10 @@ export default {
 
 the set_form object can take additional 2 parameters
 
-| Params      | Description                                          | Default |
-| ----------- | ---------------------------------------------------- | ------- |
-| horizontal  | set form horizontal (label & input in the same line) | false   |
-| validations | set client-side validation rules (detail below)      | null    |
+| Params     | Description                                          | Default |
+| ---------- | ---------------------------------------------------- | ------- |
+| horizontal | set form horizontal (label & input in the same line) | false   |
+| validator  | set client-side validation rules (detail below)      | null    |
 
 ### Import the Field Component
 
@@ -161,11 +160,12 @@ and a form like this will be generate for you
 
 ## Client-side validation
 
-Client side validation is just simple as create a validation function as below (inspired by redux-form) then pass to the
-set_form action
+Client side validation can be easily done by create a validator function and pass to the set_form action (inspired by
+redux-form validation) Below is a function that take form data and return errors in form of object.
 
 ```javascript
-const TodoValidations = values => {
+// creat validator function
+const TodoValidator = values => {
   const errors = {}
   const addErrors = (field, text) => { errors[field] = (errors[field] || []).concat(text) }
 
@@ -181,7 +181,7 @@ created: function() {
     this.set_form({
       ...this.todo,
       horizontal: true,
-      validations: TodoValidations
+      validator: TodoValidator
     })
   },
 ```
@@ -214,7 +214,7 @@ export default {
           }
 
           // use the following call to add server errors to vuex form
-          this.form.serverErrors.record(server_errors)
+          this.form.errors.record(server_errors)
         })
       )
     }

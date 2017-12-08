@@ -3,6 +3,10 @@ class Errors {
     this.errors = {}
   }
 
+  all() {
+    return this.errors
+  }
+
   has(field) {
     return this.errors.hasOwnProperty(field)
   }
