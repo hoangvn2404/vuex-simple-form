@@ -25,7 +25,7 @@ goals:
   </form>
 ```
 
-Just wanna play with it? [Check out my sandboxes](https://codesandbox.io/s/0mxvw6zwrv)
+Just wanna play with it? [Check out my sandboxes](https://codesandbox.io/s/0160wrwqyv?module=%2FApp.vue)
 
 ## Installation
 
